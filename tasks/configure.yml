@@ -1,0 +1,9 @@
+---
+
+- name: Create redirectionio-agent configuration file
+  template:
+    src: agent.yml.j2
+    dest: /etc/redirectionio/agent.yml
+    owner: '{{ redirectionio_user }}'
+    group: '{{ redirectionio_group }}'
+  notify: restart redirectionio-agent

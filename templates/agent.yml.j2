@@ -1,0 +1,31 @@
+# your redirection.io project key
+key: "{{ redirectionio_token }}"
+
+# interface listening. "" for all interfaces (not advised)
+# /var/run/redirectionio.sock or 127.0.0.1:10301
+listen: 127.0.0.1:10301
+#listen: /var/run/redirectionio.sock #If you use a file, please make sure that user running the agent has the right to create it
+
+# name of this instance, mandatory for logging
+instance_name: "{{ redirectionio_instance_name }}"
+
+# Sets log configuration. Each section is optional and independant of one another.
+#
+#log:
+#    file:
+#        level: debug
+#        path: /proc/self/fd/2
+#
+#    syslog:
+#        # To push to the local syslog:
+#        #
+#        # network: "" # empty string
+#        # address: "" # empty string
+#        #
+#        # or, to remote server:
+#        #
+#        # network: "udp"
+#        # address: "localhost:514"
+#        #
+#        level: info
+#        tag: redirectionio-proxy # optional

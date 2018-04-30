@@ -1,0 +1,34 @@
+---
+galaxy_info:
+  author: 'redirection.io'
+  description: Install redirection.io-agent
+  license: MIT
+  min_ansible_version: 1.6
+  platforms:
+    - name: Ubuntu
+      versions:
+        - lucid
+        - maverick
+        - natty
+        - oneiric
+        - precise
+        - quantal
+        - raring
+        - saucy
+        - trusty
+        - utopic
+        - vivid
+        - xenial
+    - name: Debian
+      versions:
+        - squeeze
+        - wheezy
+        - jessie
+    - name: EL
+      versions:
+        - 7
+        - 6
+        - 5
+  categories:
+    - monitoring
+dependencies: []

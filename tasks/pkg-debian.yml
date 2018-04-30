@@ -1,0 +1,26 @@
+---
+
+- name: Install the apt-transport-https
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: import redirection.io apt key
+  apt_key:
+    keyserver: pgp.mit.edu
+    id: 24765BBD8E16EB44
+    state: present
+
+- name: Install redirection.io repository
+  apt_repository:
+    repo: "deb https://packages.redirection.io/deb debian main"
+    state: present
+
+- name: Update apt cache
+  apt:
+    update_cache: true
+
+- name: Install redirectionio-agent
+  apt:
+    name: redirectionio-agent
+    state: latest

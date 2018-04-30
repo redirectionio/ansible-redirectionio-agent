@@ -1,0 +1,17 @@
+---
+
+- name: Checking for configuration vars
+  fail:
+    msg: "{{ item }} has not been defined"
+  when: "{{ item }} is undefined"
+  with_items:
+    - redirectionio_token
+    - redirectionio_instance_name
+
+- import_tasks: pkg-debian.yml
+  when: ansible_os_family == "Debian"
+
+- import_tasks: pkg-redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- import_tasks: configure.yml

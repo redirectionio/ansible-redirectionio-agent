@@ -1,0 +1,6 @@
+---
+
+- name: restart redirectionio-agent
+  service:
+    name: redirectionio-agent
+    state: restarted
