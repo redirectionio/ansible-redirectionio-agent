@@ -24,6 +24,7 @@ ansible-galaxy install redirectionio.agent
   vars:
     redirectionio_token: 'abcdefgh-ijkl-mnop-qrst-uvwxyz123456'
     redirectionio_instance_name: 'The magical frontend #1'
+```
 
 ## Dependencies
 
