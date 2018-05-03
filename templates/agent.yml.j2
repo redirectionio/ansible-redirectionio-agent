@@ -1,3 +1,5 @@
+# {{ ansible_managed }}
+
 # your redirection.io project key
 key: "{{ redirectionio_token }}"
 
@@ -14,7 +16,7 @@ instance_name: "{{ redirectionio_instance_name }}"
 #log:
 #    file:
 #        level: debug
-#        path: /proc/self/fd/2
+#        path: /var/log/redirectionio/agent.log
 #
 #    syslog:
 #        # To push to the local syslog:
