@@ -7,23 +7,17 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - lucid
-        - maverick
-        - natty
-        - oneiric
-        - precise
-        - quantal
-        - raring
-        - saucy
         - trusty
-        - utopic
-        - vivid
         - xenial
+        - artful
+        - bionic
     - name: Debian
       versions:
-        - squeeze
         - wheezy
         - jessie
+        - stretch
+        - buster
+        - bullseye
     - name: EL
       versions:
         - 7
