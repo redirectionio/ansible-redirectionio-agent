@@ -17,12 +17,11 @@ galaxy_info:
         - jessie
         - stretch
         - buster
-        - bullseye
     - name: EL
       versions:
         - 7
         - 6
         - 5
-  categories:
+  galaxy_tags:
     - monitoring
 dependencies: []
