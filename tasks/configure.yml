@@ -6,4 +6,5 @@
     dest: /etc/redirectionio/agent.yml
     owner: '{{ redirectionio_user }}'
     group: '{{ redirectionio_group }}'
+    mode: 0644
   notify: restart redirectionio-agent

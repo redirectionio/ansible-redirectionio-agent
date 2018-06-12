@@ -2,3 +2,4 @@
 
 redirectionio_user: redirectionio
 redirectionio_group: root
+redirectionio_agent_listen: 127.0.0.1:10301

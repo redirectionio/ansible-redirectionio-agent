@@ -15,6 +15,10 @@ ansible-galaxy install redirectionio.agent
  * `redirectionio_token`: your redirection.io project token
  * `redirectionio_instance_name`: the name of this instance, in order to track it in the web interface
 
+You may also configure:
+
+ * `redirectionio_agent_listen`: interface listening. Use `/var/run/redirectionio.sock` or `127.0.0.1:10301`
+
 ## Example playbook
 
 ```yml

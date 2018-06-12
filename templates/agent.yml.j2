@@ -5,7 +5,7 @@ key: "{{ redirectionio_token }}"
 
 # interface listening. "" for all interfaces (not advised)
 # /var/run/redirectionio.sock or 127.0.0.1:10301
-listen: 127.0.0.1:10301
+listen: {{ redirectionio_agent_listen }}
 #listen: /var/run/redirectionio.sock #If you use a file, please make sure that user running the agent has the right to create it
 
 # name of this instance, mandatory for logging
@@ -30,4 +30,4 @@ instance_name: "{{ redirectionio_instance_name }}"
 #        # address: "localhost:514"
 #        #
 #        level: info
-#        tag: redirectionio-proxy # optional
+#        tag: redirectionio-agent # optional
