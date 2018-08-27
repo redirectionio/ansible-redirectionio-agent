@@ -1,0 +1,16 @@
+- hosts: test_host
+  roles:
+    - { role: redirectionio.agent, become: true }
+  vars:
+    redirectionio_user: redirectionio
+    redirectionio_group: redirectionio
+    redirectionio_token: 'abcdefgh-ijkl-mnop-qrst-uvwxyz123456'
+    redirectionio_instance_name: 'The magical frontend #1'
+    redirectionio_agent_listen: 127.0.0.1:10301
+    redirectionio_agent_persist: true
+    redirectionio_agent_datadir: /var/lib/redirectionio-data
+    redirectionio_agent_cache: false
+    redirectionio_agent_log:
+      file:
+        level: debug
+        path: /var/log/redirectionio/agent.log
