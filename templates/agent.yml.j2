@@ -25,24 +25,23 @@ datadir: {{ redirectionio_agent_datadir }}
 cache: {{ redirectionio_agent_cache | lower }}
 
 # Sets log configuration. Each section is optional and independent of one another.
+#log:
+#  file:
+#    level: info
+#    path: /var/log/redirectionio/agent.log
+#
+#  syslog:
+#    # To push to the local syslog:
+#    #
+#    # network: "" # empty string
+#    # address: "" # empty string
+#    #
+#    # or, to remote server:
+#    #
+#    # network: "udp"
+#    # address: "localhost:514"
+#    #
+#    level: info
+#    tag: redirectionio-agent # optional
 log:
   {{ redirectionio_agent_log | to_nice_yaml }}
-
-#log:
-#    file:
-#        level: info
-#        path: /var/log/redirectionio/agent.log
-#
-#    syslog:
-#        # To push to the local syslog:
-#        #
-#        # network: "" # empty string
-#        # address: "" # empty string
-#        #
-#        # or, to remote server:
-#        #
-#        # network: "udp"
-#        # address: "localhost:514"
-#        #
-#        level: info
-#        tag: redirectionio-agent # optional
