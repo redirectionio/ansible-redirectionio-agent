@@ -1,0 +1,11 @@
+{{ redirectionio_agent_log.file.path }} {
+    compress
+    create 0644 {{ redirectionio_user }} {{ redirectionio_group }}
+    daily
+    delaycompress
+    ifempty
+    maxage 30
+    missingok
+    sharedscripts
+    size 10M
+}
