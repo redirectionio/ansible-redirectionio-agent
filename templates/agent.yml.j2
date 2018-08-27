@@ -3,19 +3,34 @@
 # your redirection.io project key
 key: "{{ redirectionio_token }}"
 
-# interface listening. "" for all interfaces (not advised)
-# /var/run/redirectionio.sock or 127.0.0.1:10301
-listen: {{ redirectionio_agent_listen }}
-#listen: /var/run/redirectionio.sock #If you use a file, please make sure that user running the agent has the right to create it
-
 # name of this instance, mandatory for logging
 instance_name: "{{ redirectionio_instance_name }}"
 
-# Sets log configuration. Each section is optional and independant of one another.
-#
+# interface listening
+# ff you use a file, please make sure that the user running the agent has the rights to create it
+# /var/run/redirectionio.sock or 127.0.0.1:10301
+listen: {{ redirectionio_agent_listen }}
+
+# Whether or not to store rules on the disk.
+# This allows to restart the agent with existing rules without the need to call redirection.io's backend
+# default value: true
+persist: {{ redirectionio_agent_persist | lower }}
+
+# Directory where the rules will be persisted
+datadir: {{ redirectionio_agent_datadir }}
+
+# Whether or not to store a compiled version of the rules in memory.
+# This makes the agent much faster, but can consume a lot of memory with very large rulesets
+# default value: true
+cache: {{ redirectionio_agent_cache | lower }}
+
+# Sets log configuration. Each section is optional and independent of one another.
+log:
+  {{ redirectionio_agent_log | to_nice_yaml }}
+
 #log:
 #    file:
-#        level: debug
+#        level: info
 #        path: /var/log/redirectionio/agent.log
 #
 #    syslog:

@@ -8,3 +8,26 @@
     group: '{{ redirectionio_group }}'
     mode: 0644
   notify: restart redirectionio-agent
+
+- name: Create {{ redirectionio_agent_datadir }} directory
+  file:
+    path: "{{ redirectionio_agent_datadir }}"
+    owner: '{{ redirectionio_user }}'
+    group: '{{ redirectionio_group }}'
+    mode: 0755
+    state: directory
+  when: redirectionio_agent_datadir is defined
+
+- name: Ensure redirectionio-agent is running
+  service:
+    name: redirectionio-agent
+    state: started
+    enabled: yes
+  when: redirectionio_agent_enabled and not ansible_check_mode
+
+- name: Ensure redirectionio-agent is not running
+  service:
+    name: redirectionio-agent
+    state: stopped
+    enabled: no
+  when: not redirectionio_agent_enabled
