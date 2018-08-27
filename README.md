@@ -17,7 +17,14 @@ ansible-galaxy install redirectionio.agent
 
 You may also configure:
 
- * `redirectionio_agent_listen`: interface listening. Use `/var/run/redirectionio.sock` or `127.0.0.1:10301`
+ * `redirectionio_agent_enabled` (default: `true`): shall redirection.io be enabled after the playbook is run?
+ * `redirectionio_user` (default `redirectionio`): user running the agent
+ * `redirectionio_group` (default `redirectionio`): group of the user running the agent
+ * `redirectionio_agent_listen` (default `127.0.0.1:10301`): interface listening. Use `/var/run/redirectionio.sock` or `127.0.0.1:10301`
+ * `redirectionio_agent_persist` (default `true`): whether or not to store rules on the disk
+ * `redirectionio_agent_datadir` (default `/var/lib/redirectionio`): where to store persisted rules
+ * `redirectionio_agent_cache` (default: `true`): use in-memory cache to speed-up agent matching
+ * `redirectionio_agent_log` (default: `{}`): log configuration directives - see the [configuration template](./templates/agent.yml.j2) for more details.
 
 ## Example playbook
 
@@ -33,6 +40,10 @@ You may also configure:
 ## Dependencies
 
 This role has no dependency.
+
+## Tests
+
+The role can be tested using the [test instructions](./tests/README.md).
 
 ## License
 
