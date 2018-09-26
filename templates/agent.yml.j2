@@ -6,8 +6,8 @@ key: "{{ redirectionio_token }}"
 # name of this instance, mandatory for logging
 instance_name: "{{ redirectionio_instance_name }}"
 
-# interface listening
-# ff you use a file, please make sure that the user running the agent has the rights to create it
+# Interface listening
+# If you use a file, please make sure that the user running the agent has the rights to create it
 # /var/run/redirectionio.sock or 127.0.0.1:10301
 listen: {{ redirectionio_agent_listen }}
 
