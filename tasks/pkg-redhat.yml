@@ -9,7 +9,7 @@
   yum_repository:
     name: redirectionio
     description: redirection.io
-    baseurl: "https://packages.redirection.io/rpm"
+    baseurl: "https://packages.redirection.io/rpm/any"
     enabled: yes
     gpgcheck: yes
     state: present

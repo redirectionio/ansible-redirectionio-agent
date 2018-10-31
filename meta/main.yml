@@ -11,6 +11,7 @@ galaxy_info:
         - xenial
         - artful
         - bionic
+        - cosmic
     - name: Debian
       versions:
         - wheezy

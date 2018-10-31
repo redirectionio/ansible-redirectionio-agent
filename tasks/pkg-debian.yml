@@ -13,7 +13,7 @@
 
 - name: Install redirection.io repository
   apt_repository:
-    repo: "deb https://packages.redirection.io/deb debian main"
+    repo: "deb https://packages.redirection.io/deb any main"
     state: present
 
 - name: Update apt cache

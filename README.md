@@ -12,12 +12,12 @@ ansible-galaxy install redirectionio.agent
 
 ## Role vars
 
- * `redirectionio_token`: your redirection.io project token
- * `redirectionio_instance_name`: the name of this instance, in order to track it in the web interface
+ * `redirectionio_agent_instance_name`: the name of this instance, in order to track it in the web interface
 
 You may also configure:
 
  * `redirectionio_agent_enabled` (default: `true`): shall redirection.io be enabled after the playbook is run?
+ * `redirectionio_agent_default_key`: the default project key to use
  * `redirectionio_user` (default `redirectionio`): user running the agent
  * `redirectionio_group` (default `redirectionio`): group of the user running the agent
  * `redirectionio_agent_listen` (default `127.0.0.1:10301`): interface listening. Use `/var/run/redirectionio.sock` or `127.0.0.1:10301`
@@ -33,7 +33,6 @@ You may also configure:
   roles:
     - { role: redirectionio.agent, become: true }
   vars:
-    redirectionio_token: 'abcdefgh-ijkl-mnop-qrst-uvwxyz123456'
     redirectionio_instance_name: 'The magical frontend #1'
 ```
 
