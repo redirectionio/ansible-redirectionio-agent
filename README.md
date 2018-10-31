@@ -33,7 +33,7 @@ You may also configure:
   roles:
     - { role: redirectionio.agent, become: true }
   vars:
-    redirectionio_instance_name: 'The magical frontend #1'
+    redirectionio_agent_instance_name: 'The magical frontend #1'
 ```
 
 ## Dependencies
