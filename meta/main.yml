@@ -1,7 +1,8 @@
 ---
 galaxy_info:
+  role_name: 'agent'
   author: 'redirection.io'
-  description: Install redirection.io-agent
+  description: Install redirectionio-agent
   license: MIT
   min_ansible_version: 1.6
   platforms:
