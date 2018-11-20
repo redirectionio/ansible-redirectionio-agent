@@ -2,5 +2,4 @@
   roles:
     - { role: redirectionio.agent, become: true }
   vars:
-    redirectionio_agent_default_key: 'abcdefgh-ijkl-mnop-qrst-uvwxyz123456'
     redirectionio_agent_instance_name: 'The magical frontend #1'

@@ -17,7 +17,6 @@ ansible-galaxy install redirectionio.agent
 You may also configure:
 
  * `redirectionio_agent_enabled` (default: `true`): shall redirection.io be enabled after the playbook is run?
- * `redirectionio_agent_default_key`: the default project key to use
  * `redirectionio_user` (default `redirectionio`): user running the agent
  * `redirectionio_group` (default `redirectionio`): group of the user running the agent
  * `redirectionio_agent_listen` (default `127.0.0.1:10301`): interface listening. Use `/var/run/redirectionio.sock` or `127.0.0.1:10301`
