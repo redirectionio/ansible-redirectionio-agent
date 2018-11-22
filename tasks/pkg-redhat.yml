@@ -21,4 +21,4 @@
 - name: Install redirectionio-agent
   yum:
     name: redirectionio-agent
-    state: latest
+    state: present
