@@ -7,7 +7,7 @@
 
 - name: import redirection.io apt key
   apt_key:
-    keyserver: pgp.mit.edu
+    keyserver: keyserver.ubuntu.com
     id: 24765BBD8E16EB44
     state: present
 
