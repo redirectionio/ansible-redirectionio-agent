@@ -3,7 +3,7 @@ galaxy_info:
   role_name: 'agent'
   author: 'redirection.io'
   company: "redirection.io"
-  description: Install redirectionio-agent
+  description: Install redirectionio-agent, a versatile http redirection agent designed to help your SEO
   license: MIT
   min_ansible_version: 1.6
   platforms:
@@ -26,5 +26,7 @@ galaxy_info:
         - 6
         - 5
   galaxy_tags:
+    - http
     - monitoring
+    - redirection
 dependencies: []

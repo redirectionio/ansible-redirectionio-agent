@@ -1,5 +1,7 @@
 # Ansible redirectionio-agent role
 
+redirection.io is a Web traffic redirection manager. It provides a collection of tools for website administrators, SEO agencies and developers, which help analyze HTTP errors, setup HTTP redirections and monitor the traffic efficiently.
+
 This role installs the [redirection.io](https://redirection.io/) agent. It supports Debian and RHEL-based Linux distributions.
 
 ## Installation
