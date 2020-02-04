@@ -16,9 +16,11 @@ redirectionio_agent_listen: 127.0.0.1:10301
 redirectionio_agent_persist: true
 redirectionio_agent_datadir: /var/lib/redirectionio
 
-# Whether or not to store a compiled version of the rules in memory.
-# This makes the agent much faster, but can consume a lot of memory with very large rulesets
-redirectionio_agent_cache: true
+# Number of items to store in memory.
+# This makes the agent much faster, but will consume more memory on very large rulesets if this setting is high
+# With the default value, a very large ruleset shoud consume about 150-200 MB of memory
+# Set to 0 to disable the cache and minimize memory usage
+redirectionio_agent_cache: 10000
 
 # Logging configuration options
 redirectionio_agent_log: {}

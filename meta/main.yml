@@ -29,4 +29,5 @@ galaxy_info:
     - http
     - monitoring
     - redirection
+    - seo
 dependencies: []
