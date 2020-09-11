@@ -13,6 +13,17 @@
     enabled: yes
     gpgcheck: yes
     state: present
+  when: not redirectionio_agent_channel
+
+- name: Install redirection.io repository
+  yum_repository:
+    name: redirectionio
+    description: redirection.io
+    baseurl: "https://packages.redirection.io/rpm/{{ redirectionio_agent_channel }}/{{ redirectionio_agent_main_version }}/any"
+    enabled: yes
+    gpgcheck: yes
+    state: present
+  when: redirectionio_agent_channel
 
 - name: Update yum cache
   yum:
@@ -20,5 +31,5 @@
 
 - name: Install redirectionio-agent
   yum:
-    name: redirectionio-agent
+    name: "redirectionio-agent-{{ redirectionio_agent_version }}"
     state: present
