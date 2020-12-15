@@ -44,3 +44,6 @@ cache: {{ redirectionio_agent_cache | lower }}
 #    tag: redirectionio-agent # optional
 log:
   {{ redirectionio_agent_log | to_nice_yaml }}
+
+# redirection.io API endpoint
+host: {{ redirectionio_agent_host }}

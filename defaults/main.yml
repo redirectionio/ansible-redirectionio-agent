@@ -34,3 +34,6 @@ redirectionio_agent_version: "*"
 
 # Logging configuration options
 redirectionio_agent_log: {}
+
+# redirection.io API endpoint. You are not likely to change this value
+redirectionio_agent_host: https://api.redirection.io
