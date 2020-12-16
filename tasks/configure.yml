@@ -21,7 +21,7 @@
 - name: Ensure redirectionio-agent is running
   service:
     name: redirectionio-agent
-    state: started
+    state: restarted
     enabled: yes
     daemon_reload: true
   when: redirectionio_agent_enabled and not ansible_check_mode

@@ -31,4 +31,3 @@
   apt:
     name: "redirectionio-agent={{ redirectionio_agent_version }}"
     state: present
-  notify: restart redirectionio-agent

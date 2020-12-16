@@ -4,3 +4,4 @@
   service:
     name: redirectionio-agent
     state: restarted
+  when: redirectionio_agent_enabled and not ansible_check_mode

@@ -47,3 +47,7 @@ log:
 
 # redirection.io API endpoint
 host: {{ redirectionio_agent_host }}
+
+{% if redirectionio_agent_proxies is defined %}
+{{ redirectionio_agent_proxies | to_nice_yaml }}
+{% endif %}
