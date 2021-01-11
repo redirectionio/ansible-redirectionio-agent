@@ -25,7 +25,7 @@ redirectionio_agent_cache: 10000
 # Version management
 # This allow to choose a specific version for your infrastructure
 # Channel can be stable or beta, left empty to use legacy system
-redirectionio_agent_channel: ""
+redirectionio_agent_channel: "stable"
 
 # Main version of agent, this allow to upgrade safely your system without BC break with a new main version
 redirectionio_agent_main_version: 2
