@@ -13,7 +13,7 @@
     enabled: yes
     gpgcheck: yes
     state: present
-  when: redirectionio_agent_channel|length == 0
+  when: redirectionio_agent_main_version == 1
 
 - name: Install redirection.io repository
   yum_repository:
@@ -23,7 +23,7 @@
     enabled: yes
     gpgcheck: yes
     state: present
-  when: redirectionio_agent_channel|length > 0
+  when: redirectionio_agent_main_version > 1
 
 - name: Update yum cache
   yum:

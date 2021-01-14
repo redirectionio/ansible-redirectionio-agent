@@ -26,6 +26,7 @@ You may also configure:
  * `redirectionio_agent_datadir` (default `/var/lib/redirectionio`): where to store persisted rules
  * `redirectionio_agent_cache` (default: `true`): use in-memory cache to speed-up agent matching
  * `redirectionio_agent_log` (default: `{}`): log configuration directives - see the [configuration template](./templates/agent.yml.j2) for more details.
+ * `redirectionio_agent_proxies` (default: `{}`) - see the [configuration reference](https://redirection.io/documentation/developer-documentation/agent-configuration-reference#proxies) for more details.
 
 ## Example playbook
 

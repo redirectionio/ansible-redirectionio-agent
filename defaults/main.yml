@@ -23,15 +23,15 @@ redirectionio_agent_datadir: /var/lib/redirectionio
 redirectionio_agent_cache: 10000
 
 # Version management
-# This allow to choose a specific version for your infrastructure
-# Channel can be stable or beta, left empty to use legacy system
-redirectionio_agent_channel: ""
+# This allows to choose a specific release channel (stable or beta)
+redirectionio_agent_channel: "stable"
 
-# Main version of agent, this allow to upgrade safely your system without BC break with a new main version
+# Main version of the agent
+# This allows to upgrade safely your system without BC break with a new main version
 redirectionio_agent_main_version: 2
 
-# Specific version for your agent, use * to use the latest available version
-# Version are of the form: [timestamp]:[version]-[build], if you want a specific version like 2.0.0 you should put *:2.0.0-*
+# Specific version of the agent. Use * to use the latest available version
+# Versions are of the form: [timestamp]:[version]-[build], if you want a specific version like 2.0.0, you should put *:2.0.0-*
 redirectionio_agent_version: "*"
 
 # Logging configuration options

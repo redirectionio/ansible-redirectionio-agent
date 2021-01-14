@@ -15,13 +15,13 @@
   apt_repository:
     repo: "deb https://packages.redirection.io/deb any main"
     state: present
-  when: redirectionio_agent_channel|length == 0
+  when: redirectionio_agent_main_version == 1
 
 - name: Install redirection.io repository
   apt_repository:
     repo: "deb https://packages.redirection.io/deb/{{ redirectionio_agent_channel }}/{{ redirectionio_agent_main_version }} any main"
     state: present
-  when: redirectionio_agent_channel|length > 0
+  when: redirectionio_agent_main_version > 1
 
 - name: Update apt cache
   apt:

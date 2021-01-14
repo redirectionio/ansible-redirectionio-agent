@@ -3,28 +3,26 @@ galaxy_info:
   role_name: 'agent'
   author: 'redirection.io'
   company: "redirection.io"
-  description: Install redirectionio-agent, a versatile http redirection agent designed to help your SEO
+  description: Install redirectionio-agent, a versatile http redirection agent and proxy designed to help your SEO
   license: MIT
   min_ansible_version: 1.6
   platforms:
     - name: Ubuntu
       versions:
-        - trusty
         - xenial
-        - artful
         - bionic
         - cuttlefish
+        - disco
+        - eoan
+        - focal
     - name: Debian
       versions:
-        - wheezy
-        - jessie
         - stretch
         - buster
     - name: EL
       versions:
         - 7
-        - 6
-        - 5
+        - 8
   galaxy_tags:
     - http
     - monitoring
