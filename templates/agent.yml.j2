@@ -18,7 +18,7 @@ datadir: {{ redirectionio_agent_datadir }}
 
 # Number of items to store in memory.
 # This makes the agent much faster, but will consume more memory on very large rulesets if this setting is high
-# With the default value, a very large ruleset shoud consume about 150-200 MB of memory
+# With the default value, a very large ruleset should consume about 150-200 MB of memory
 # Set to 0 to disable the cache and minimize memory usage
 # Default value: 10000
 cache: {{ redirectionio_agent_cache | lower }}
@@ -43,11 +43,29 @@ cache: {{ redirectionio_agent_cache | lower }}
 #    level: info
 #    tag: redirectionio-agent # optional
 log:
-  {{ redirectionio_agent_log | to_nice_yaml }}
+  {{ redirectionio_agent_log | to_nice_yaml | indent(2) }}
 
 # redirection.io API endpoint
 host: {{ redirectionio_agent_host }}
 
 {% if redirectionio_agent_proxies is defined %}
-{{ redirectionio_agent_proxies | to_nice_yaml }}
+proxies:
+  {{ redirectionio_agent_proxies | to_nice_yaml | indent(2) }}
+{% endif %}
+
+{% if redirectionio_agent_project_keys is defined %}
+project_keys:
+  {{ redirectionio_agent_project_keys | to_nice_yaml | indent(2) }}
+{% endif %}
+
+{% if redirectionio_agent_instance_logging is defined %}
+logging: {{ redirectionio_agent_instance_logging | lower }}
+{% endif %}
+
+{% if redirectionio_agent_instance_test_mode is defined %}
+test_mode: {{ redirectionio_agent_instance_test_mode | lower }}
+{% endif %}
+
+{% if redirectionio_agent_metrics_server is defined %}
+metrics_server: {{ redirectionio_agent_metrics_server }}
 {% endif %}

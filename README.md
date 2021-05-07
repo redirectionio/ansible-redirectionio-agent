@@ -27,6 +27,10 @@ You may also configure:
  * `redirectionio_agent_cache` (default: `true`): use in-memory cache to speed-up agent matching
  * `redirectionio_agent_log` (default: `{}`): log configuration directives - see the [configuration template](./templates/agent.yml.j2) for more details.
  * `redirectionio_agent_proxies` (default: `{}`) - see the [configuration reference](https://redirection.io/documentation/developer-documentation/agent-configuration-reference#proxies) for more details.
+ * `redirectionio_agent_project_keys` (default: `[]`) - see the [configuration reference](https://redirection.io/documentation/developer-documentation/agent-configuration-reference#project-keys) for more details.
+ * `redirectionio_agent_instance_logging` (default: `-`) - see the [configuration reference](https://redirection.io/documentation/developer-documentation/agent-configuration-reference#logging) for more details.
+ * `redirectionio_agent_instance_test_mode` (default: `-`) - see the [configuration reference](https://redirection.io/documentation/developer-documentation/agent-configuration-reference#test-mode) for more details.
+ * `redirectionio_agent_metrics_server` (default: `[]`) - see the [configuration reference](https://redirection.io/documentation/developer-documentation/agent-configuration-reference#metrics-server) for more details.
 
 ## Example playbook
 
