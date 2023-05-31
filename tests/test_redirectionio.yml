@@ -1,4 +1,5 @@
-- hosts: test_host
+- name: Install redirectionio-agent with minimal options
+  hosts: test_host
   roles:
     - { role: redirectionio.agent, become: true }
   vars:

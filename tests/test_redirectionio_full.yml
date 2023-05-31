@@ -1,4 +1,5 @@
-- hosts: test_host
+- name: Install redirectionio-agent with all options
+  hosts: test_host
   roles:
     - { role: redirectionio.agent, become: true }
   vars:
@@ -8,7 +9,20 @@
     redirectionio_agent_listen: 127.0.0.1:10301
     redirectionio_agent_persist: true
     redirectionio_agent_datadir: /var/lib/redirectionio-data
-    redirectionio_agent_cache: false
+    redirectionio_agent_logging: true
+    redirectionio_agent_test_mode: false
+    redirectionio_agent_cache: 0
+    redirectionio_agent_timeout: 10
+    redirectionio_agent_project_keys:
+        - 'Key 1'
+        - 'Key 2'
+    redirectionio_agent_proxies:
+        - listen: '0.0.0.0:80'
+          forward: '127.0.0.1:8080'
+          project_key: 'A VALID PROJECT KEY'
+    redirectionio_agent_metrics:
+      listen: 127.0.0.1:8080
+      format: "prometheus"
     redirectionio_agent_log:
       file:
         level: debug

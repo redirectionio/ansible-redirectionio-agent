@@ -2,26 +2,6 @@
 
 redirectionio_agent_enabled: yes
 
-# Default user and group
-redirectionio_user: redirectionio
-redirectionio_group: redirectionio
-
-# Interface listening
-# If you use a file, please make sure that the user running the agent has the rights to create it
-# /var/run/redirectionio.sock or 127.0.0.1:10301
-redirectionio_agent_listen: 127.0.0.1:10301
-
-# Whether or not to store rules on the disk.
-# This allows to restart the agent with existing rules without the need to call redirection.io's backend
-redirectionio_agent_persist: true
-redirectionio_agent_datadir: /var/lib/redirectionio
-
-# Number of items to store in memory.
-# This makes the agent much faster, but will consume more memory on very large rulesets if this setting is high
-# With the default value, a very large ruleset shoud consume about 150-200 MB of memory
-# Set to 0 to disable the cache and minimize memory usage
-redirectionio_agent_cache: 10000
-
 # Version management
 # This allows to choose a specific release channel (stable or beta)
 redirectionio_agent_channel: "stable"
@@ -34,7 +14,107 @@ redirectionio_agent_main_version: 2
 # Versions are of the form: [timestamp]:[version]-[build], if you want a specific version like 2.0.0, you should put *:2.0.0-*
 redirectionio_agent_version: "*"
 
-# Logging configuration options
+# Default user and group
+redirectionio_user: redirectionio
+redirectionio_group: redirectionio
+
+# Interface listening
+# If you use a file, please make sure that the user running the agent has the rights to create it
+# /var/run/redirectionio.sock or 127.0.0.1:10301
+redirectionio_agent_listen: 127.0.0.1:10301
+
+# Whether or not to store rules on the disk.
+# This allows to restart the agent with existing rules without the need to call redirection.io's backend
+redirectionio_agent_persist: true
+
+# Directory where the rules will be persisted
+redirectionio_agent_datadir: /var/lib/redirectionio
+
+# This setting allows to define the logging behavior for this instance. If it is set to "true", the instance will
+# be marked as allowed to log traffic. If it is set to "false", the instance will not collect traffic logs.
+# If this setting is not defined, or defined with any other value than "true" or "false", it will be managed
+# by the value defined in the manager graphical interface. Else, this setting takes precedence over the logging
+# behavior defined in the manager graphical interface.
+redirectionio_agent_logging: ~
+
+# This setting allows to set this instance in "test" mode. If this setting is not defined, or defined
+# with any other value than "true" or "false", it will be managed by the value defined in the
+# manager graphical interface. Else, this setting takes precedence over the test mode defined in the
+# manager graphical interface.
+redirectionio_agent_test_mode: ~
+
+# Number of items to store in memory.
+# This makes the agent much faster, but will consume more memory on very large rulesets if this setting is high
+# With the default value, a very large ruleset should consume about 150-200 MB of memory
+# Set to 0 to disable the cache and minimize memory usage
+redirectionio_agent_cache: 10000
+
+# Timeout for the agent to wait for a response from redirection.io manager when updating rules or sending logs
+redirectionio_agent_timeout: 120
+
+# Keys of projects to preload
+# This allows to preload the agent with some projects rulesets at startup time
+#redirectionio_agent_project_keys:
+#    - my_project_key_1
+#    - my_project_key_2
+redirectionio_agent_project_keys: []
+
+# Run the agent as a reverse proxy
+# Leave it empty to disable the reverse proxy feature
+#redirectionio_agent_proxies:
+#    -
+#        listen: "0.0.0.0:80" # Listen endpoint
+#        forward: "http://127.0.0.1:8080" # Remote endpoint, need http or https, if not set no forward will be done and it will return a 404 if there is no rule
+#        project_key: "A VALID PROJECT KEY" # Project key to use
+#        preserve_host: true # Preserve host header, defaults to false
+#        add_rule_ids_header: true # Add a header with rule ids used in the http response, header exists but empty if no rule, defaults to false (no header)
+#        trusted_proxies: [] # A list of ip cidr to filter trusted proxy ips when matching against ip
+#        request_body_size_limit: 2MiB # body size limit for request, default to 2 MiB
+#        compress: false # enable compression depending on the accept header, default to false
+#        access_log: false # enable access log, which log http requests to the "info" level, default to false
+#        allow_invalid_certificates: false # allow invalid certificates for https forward, default to false
+#        allow_ipv6_forward: false # allow to use ipv6 for forwarding
+#        forwarded_for_strategy: auto # choose the strategy to use for the X-Forwarded-For header, can be "auto" (check existing header and use forwarded in priority, if there is a X-Forwarded header will try to convert it, if not possible will use X-Forward header), "none" (no header append), "forwarded" (always use Forwarded header), "xforwarded" (always use the X-Forwarded-[For/By/Host] headers)
+#        timeout: 0 # timeout for the forward in seconds, default to 0, which means no timeout
+#        keep_alive:
+#            enabled: true # enable keep alive, default to true
+#    -
+#        listen: "0.0.0.0:443"
+#        forward: "http://127.0.0.1:8080"
+#        project_key: "A VALID PROJECT KEY"
+#        tls_cert_file: "/etc/ssl/my_certificate.cert"
+#        tls_key_file: "/etc/ssl/my_certificate.key"
+redirectionio_agent_proxies: []
+
+# Define the metrics monitoring endpoint configuration. This enables a http endpoint which serves some metrics about the agent
+#redirectionio_agent_metrics:
+#    # Where the metrics server should listen, example values: 127.0.0.1:8080, 0.0.0.0:8080, /run/redirectionio-metrics.sock
+#    listen: 127.0.0.1:8080
+#    # Metrics format, can either be "json" or "prometheus", defaults to "json"
+#    format: "prometheus"
+redirectionio_agent_metrics: {}
+
+# Sets log configuration. Each section is optional and independent of one another.
+#redirectionio_agent_log:
+#    stderr:
+#        level: info
+#    file:
+#        level: info
+#        path: /var/log/redirectionio/agent.log
+#
+#    syslog:
+#        # To push to the local syslog:
+#        #
+#        # network: "" # empty string
+#        # address: "" # empty string
+#        #
+#        # or, to remote server:
+#        #
+#        # network: "udp"
+#        # address: "localhost:514"
+#        #
+#        level: info
+#        tag: redirectionio-agent # optional
 redirectionio_agent_log: {}
 
 # redirection.io API endpoint. You are not likely to change this value

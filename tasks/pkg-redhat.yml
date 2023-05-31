@@ -1,12 +1,12 @@
 ---
 
 - name: Add rpm repository key
-  rpm_key:
+  ansible.builtin.rpm_key:
     state: present
     key: http://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0x24765BBD8E16EB44
 
 - name: Install redirection.io repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: redirectionio
     description: redirection.io
     baseurl: "https://packages.redirection.io/rpm/any"
@@ -16,7 +16,7 @@
   when: redirectionio_agent_main_version == 1
 
 - name: Install redirection.io repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: redirectionio
     description: redirection.io
     baseurl: "https://packages.redirection.io/rpm/{{ redirectionio_agent_channel }}/{{ redirectionio_agent_main_version }}/any"
@@ -26,10 +26,10 @@
   when: redirectionio_agent_main_version > 1
 
 - name: Update yum cache
-  yum:
+  ansible.builtin.yum:
     update_cache: true
 
 - name: Install redirectionio-agent
-  yum:
+  ansible.builtin.yum:
     name: "redirectionio-agent-{{ redirectionio_agent_version }}"
     state: present

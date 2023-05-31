@@ -7,12 +7,16 @@
   with_items:
     - redirectionio_agent_instance_name
 
-- import_tasks: pkg-debian.yml
+- name: Install for Debian
+  ansible.builtin.import_tasks: pkg-debian.yml
   when: ansible_os_family == "Debian"
 
-- import_tasks: pkg-redhat.yml
+- name: Install for RedHat
+  ansible.builtin.import_tasks: pkg-redhat.yml
   when: ansible_os_family == "RedHat"
 
-- import_tasks: log.yml
+- name: Configure logs
+  ansible.builtin.import_tasks: log.yml
 
-- import_tasks: configure.yml
+- name: Configure agent
+  ansible.builtin.import_tasks: configure.yml

@@ -1,7 +1,7 @@
 ---
 
 - name: Create redirectionio-agent configuration file
-  template:
+  ansible.builtin.template:
     src: agent.yml.j2
     dest: /etc/redirectionio/agent.yml
     owner: '{{ redirectionio_user }}'
@@ -9,8 +9,8 @@
     mode: 0644
   notify: restart redirectionio-agent
 
-- name: Create {{ redirectionio_agent_datadir }} directory
-  file:
+- name: "Create {{ redirectionio_agent_datadir }} directory"
+  ansible.builtin.file:
     path: "{{ redirectionio_agent_datadir }}"
     owner: '{{ redirectionio_user }}'
     group: '{{ redirectionio_group }}'
@@ -19,7 +19,7 @@
   when: redirectionio_agent_datadir is defined
 
 - name: Ensure redirectionio-agent is running
-  service:
+  ansible.builtin.service:
     name: redirectionio-agent
     state: started
     enabled: yes
@@ -27,7 +27,7 @@
   when: redirectionio_agent_enabled and not ansible_check_mode
 
 - name: Ensure redirectionio-agent is not running
-  service:
+  ansible.builtin.service:
     name: redirectionio-agent
     state: stopped
     enabled: no

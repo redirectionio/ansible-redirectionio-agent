@@ -1,33 +1,33 @@
 ---
 
 - name: Install the apt-transport-https
-  apt:
+  ansible.builtin.apt:
     name: apt-transport-https
     state: present
 
-- name: import redirection.io apt key
-  apt_key:
+- name: Import redirection.io apt key
+  ansible.builtin.apt_key:
     keyserver: keyserver.ubuntu.com
     id: 24765BBD8E16EB44
     state: present
 
 - name: Install redirection.io repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb https://packages.redirection.io/deb any main"
     state: present
   when: redirectionio_agent_main_version == 1
 
 - name: Install redirection.io repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb https://packages.redirection.io/deb/{{ redirectionio_agent_channel }}/{{ redirectionio_agent_main_version }} any main"
     state: present
   when: redirectionio_agent_main_version > 1
 
 - name: Update apt cache
-  apt:
+  ansible.builtin.apt:
     update_cache: true
 
 - name: Install redirectionio-agent
-  apt:
+  ansible.builtin.apt:
     name: "redirectionio-agent={{ redirectionio_agent_version }}"
     state: present

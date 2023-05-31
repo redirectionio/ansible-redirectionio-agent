@@ -11,7 +11,7 @@
   when: redirectionio_agent_log.file is defined and redirectionio_agent_log.file.path is defined
 
 - name: "Ensure {{ redirectionio_agent_log.file.path }} exists and is writable"
-  file:
+  ansible.builtin.file:
     path: '{{ redirectionio_agent_log.file.path }}'
     owner: '{{ redirectionio_user }}'
     group: '{{ redirectionio_group }}'
@@ -20,8 +20,8 @@
   changed_when: false
   when: redirectionio_agent_log.file is defined and redirectionio_agent_log.file.path is defined
 
-- name: 'Set logrotate'
-  template:
+- name: Set logrotate
+  ansible.builtin.template:
     src: 'logrotate.j2'
     dest: /etc/logrotate.d/redirectionio-agent
     owner: root
