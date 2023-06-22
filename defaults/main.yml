@@ -1,6 +1,6 @@
 ---
 
-redirectionio_agent_enabled: yes
+redirectionio_agent_enabled: true
 
 # Version management
 # This allows to choose a specific release channel (stable or beta)
@@ -54,14 +54,14 @@ redirectionio_agent_timeout: 120
 
 # Keys of projects to preload
 # This allows to preload the agent with some projects rulesets at startup time
-#redirectionio_agent_project_keys:
+# redirectionio_agent_project_keys:
 #    - my_project_key_1
 #    - my_project_key_2
 redirectionio_agent_project_keys: []
 
 # Run the agent as a reverse proxy
 # Leave it empty to disable the reverse proxy feature
-#redirectionio_agent_proxies:
+# redirectionio_agent_proxies:
 #    -
 #        listen: "0.0.0.0:80" # Listen endpoint
 #        forward: "http://127.0.0.1:8080" # Remote endpoint, need http or https, if not set no forward will be done and it will return a 404 if there is no rule
@@ -74,7 +74,11 @@ redirectionio_agent_project_keys: []
 #        access_log: false # enable access log, which log http requests to the "info" level, default to false
 #        allow_invalid_certificates: false # allow invalid certificates for https forward, default to false
 #        allow_ipv6_forward: false # allow to use ipv6 for forwarding
-#        forwarded_for_strategy: auto # choose the strategy to use for the X-Forwarded-For header, can be "auto" (check existing header and use forwarded in priority, if there is a X-Forwarded header will try to convert it, if not possible will use X-Forward header), "none" (no header append), "forwarded" (always use Forwarded header), "xforwarded" (always use the X-Forwarded-[For/By/Host] headers)
+#        # choose the strategy to use for the X-Forwarded-For header, can be "auto" (check existing header and use
+#        # forwarded in priority, if there is a X-Forwarded header will try to convert it, if not possible will use
+#        # X-Forward header), "none" (no header append), "forwarded" (always use Forwarded header), "xforwarded" (always
+#        # use the X-Forwarded-[For/By/Host] headers)
+#        forwarded_for_strategy: auto
 #        timeout: 0 # timeout for the forward in seconds, default to 0, which means no timeout
 #        keep_alive:
 #            enabled: true # enable keep alive, default to true
@@ -87,7 +91,7 @@ redirectionio_agent_project_keys: []
 redirectionio_agent_proxies: []
 
 # Define the metrics monitoring endpoint configuration. This enables a http endpoint which serves some metrics about the agent
-#redirectionio_agent_metrics:
+# redirectionio_agent_metrics:
 #    # Where the metrics server should listen, example values: 127.0.0.1:8080, 0.0.0.0:8080, /run/redirectionio-metrics.sock
 #    listen: 127.0.0.1:8080
 #    # Metrics format, can either be "json" or "prometheus", defaults to "json"
@@ -95,7 +99,7 @@ redirectionio_agent_proxies: []
 redirectionio_agent_metrics: {}
 
 # Sets log configuration. Each section is optional and independent of one another.
-#redirectionio_agent_log:
+# redirectionio_agent_log:
 #    stderr:
 #        level: info
 #    file:

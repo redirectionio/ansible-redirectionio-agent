@@ -1,6 +1,6 @@
 ---
 
-- name: restart redirectionio-agent
+- name: Restart redirectionio-agent
   ansible.builtin.service:
     name: redirectionio-agent
     state: restarted

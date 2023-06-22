@@ -1,7 +1,7 @@
 ---
 
 - name: Checking for configuration vars
-  fail:
+  ansible.builtin.fail:
     msg: "{{ item }} has not been defined"
   when: "item is undefined"
   with_items:

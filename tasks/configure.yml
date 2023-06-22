@@ -6,15 +6,15 @@
     dest: /etc/redirectionio/agent.yml
     owner: '{{ redirectionio_user }}'
     group: '{{ redirectionio_group }}'
-    mode: 0644
-  notify: restart redirectionio-agent
+    mode: "0644"
+  notify: Restart redirectionio-agent
 
-- name: "Create {{ redirectionio_agent_datadir }} directory"
+- name: "Create directory {{ redirectionio_agent_datadir }}"
   ansible.builtin.file:
     path: "{{ redirectionio_agent_datadir }}"
     owner: '{{ redirectionio_user }}'
     group: '{{ redirectionio_group }}'
-    mode: 0755
+    mode: "0755"
     state: directory
   when: redirectionio_agent_datadir is defined
 
@@ -22,7 +22,7 @@
   ansible.builtin.service:
     name: redirectionio-agent
     state: started
-    enabled: yes
+    enabled: true
     daemon_reload: true
   when: redirectionio_agent_enabled and not ansible_check_mode
 
@@ -30,5 +30,5 @@
   ansible.builtin.service:
     name: redirectionio-agent
     state: stopped
-    enabled: no
+    enabled: false
   when: not redirectionio_agent_enabled

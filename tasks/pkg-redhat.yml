@@ -10,8 +10,8 @@
     name: redirectionio
     description: redirection.io
     baseurl: "https://packages.redirection.io/rpm/any"
-    enabled: yes
-    gpgcheck: yes
+    enabled: true
+    gpgcheck: true
     state: present
   when: redirectionio_agent_main_version == 1
 
@@ -20,8 +20,8 @@
     name: redirectionio
     description: redirection.io
     baseurl: "https://packages.redirection.io/rpm/{{ redirectionio_agent_channel }}/{{ redirectionio_agent_main_version }}/any"
-    enabled: yes
-    gpgcheck: yes
+    enabled: true
+    gpgcheck: true
     state: present
   when: redirectionio_agent_main_version > 1
 

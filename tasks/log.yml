@@ -1,21 +1,21 @@
 ---
 
-- name: "Ensure {{ redirectionio_agent_log.file.path | dirname }} exists and is writable"
-  file:
+- name: "Ensure directory exists and is writable: {{ redirectionio_agent_log.file.path | dirname }}"
+  ansible.builtin.file:
     path: '{{ redirectionio_agent_log.file.path | dirname }}'
     owner: '{{ redirectionio_user }}'
     group: '{{ redirectionio_group }}'
-    mode: 0755
+    mode: "0755"
     state: directory
   changed_when: false
   when: redirectionio_agent_log.file is defined and redirectionio_agent_log.file.path is defined
 
-- name: "Ensure {{ redirectionio_agent_log.file.path }} exists and is writable"
+- name: "Ensure file exists and is writable: {{ redirectionio_agent_log.file.path }}"
   ansible.builtin.file:
     path: '{{ redirectionio_agent_log.file.path }}'
     owner: '{{ redirectionio_user }}'
     group: '{{ redirectionio_group }}'
-    mode: 0644
+    mode: "0644"
     state: touch
   changed_when: false
   when: redirectionio_agent_log.file is defined and redirectionio_agent_log.file.path is defined
@@ -26,5 +26,5 @@
     dest: /etc/logrotate.d/redirectionio-agent
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   when: redirectionio_agent_log.file is defined and redirectionio_agent_log.file.path is defined

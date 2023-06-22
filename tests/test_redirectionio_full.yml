@@ -14,12 +14,12 @@
     redirectionio_agent_cache: 0
     redirectionio_agent_timeout: 10
     redirectionio_agent_project_keys:
-        - 'Key 1'
-        - 'Key 2'
+      - 'Key 1'
+      - 'Key 2'
     redirectionio_agent_proxies:
-        - listen: '0.0.0.0:80'
-          forward: '127.0.0.1:8080'
-          project_key: 'A VALID PROJECT KEY'
+      - listen: '0.0.0.0:80'
+        forward: '127.0.0.1:8080'
+        project_key: 'A VALID PROJECT KEY'
     redirectionio_agent_metrics:
       listen: 127.0.0.1:8080
       format: "prometheus"
