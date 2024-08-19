@@ -26,10 +26,10 @@
   when: redirectionio_agent_main_version > 1
 
 - name: Update yum cache
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     update_cache: true
 
 - name: Install redirectionio-agent
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: "redirectionio-agent-{{ redirectionio_agent_version }}"
     state: present
