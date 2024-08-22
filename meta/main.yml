@@ -6,23 +6,6 @@ galaxy_info:
   description: Install redirectionio-agent, a versatile http redirection agent and proxy designed to help your SEO
   license: MIT
   min_ansible_version: "2.6"
-  platforms:
-    - name: Ubuntu
-      versions:
-        - focal
-        - jammy
-        - noble
-    - name: Debian
-      versions:
-        - stretch
-        - buster
-        - bullseye
-        - bookworm
-    - name: EL
-      versions:
-        - "7"
-        - "8"
-        - "9"
   galaxy_tags:
     - http
     - monitoring
