@@ -1,0 +1,113 @@
+# {{ ansible_managed }}
+
+instance:
+    # Name of this instance, mandatory for logging
+    name: "{{ redirectionio_agent_instance_name }}"
+
+    # Where to store persistent data
+    # Data persisted are :
+    # - rules
+    # - projects
+    # - certificates for the reverse proxy
+    # This allows to restart the agent with existing data without the need to call redirection.io's backend or asking for a new certificate
+    # You must not use the same persist directory for multiple agents as the behavior is undefined and data may conflict
+    # Default value: /var/lib/redirectionio
+    # If set to false, the agent will not store any data
+    persist: {{ redirectionio_agent_datadir }}
+
+    # This setting allows to define the logging behavior for this instance. If it is set to "true", the instance will
+    # be marked as allowed to log traffic. If it is set to "false", the instance will not collect traffic logs.
+    # If this setting is not defined, or defined with any other value than "true" or "false", it will be managed
+    # by the value defined in the manager graphical interface. Else, this setting takes precedence over the logging
+    # behavior defined in the manager graphical interface.
+    #logging: ~
+    {% if redirectionio_agent_logging != None %}
+    logging: {{ redirectionio_agent_logging | lower }}
+    {% endif %}
+
+    # This setting allows to set this instance in "test" mode. If this setting is not defined, or defined
+    # with any other value than "true" or "false", it will be managed by the value defined in the
+    # manager graphical interface. Else, this setting takes precedence over the test mode defined in the
+    # manager graphical interface.
+    #test_mode: ~
+    {% if redirectionio_agent_test_mode != None %}
+    test_mode: {{ redirectionio_agent_test_mode | lower }}
+    {% endif %}
+
+    # Number of items to store in memory.
+    # This makes the agent much faster, but will consume more memory on very large rulesets if this setting is high
+    # With the default value, a very large ruleset should consume about 150-200 MB of memory
+    # Set to 0 to disable the cache and minimize memory usage
+    # Default value: 10000
+    cache: {{ redirectionio_agent_cache }}
+
+
+server:
+    # Interface listening
+    # If you use a file, please make sure that the user running the agent has the rights to create it
+    # /run/redirectionio.sock or 127.0.0.1:10301
+    # Default value: 127.0.0.1:10301
+    listen: {{ redirectionio_agent_listen }}
+
+    # Keys of projects to preload
+    # This allows to preload the agent with some projects rulesets at startup time
+    #project_keys:
+    #    - my_project_key_1
+    #    - my_project_key_2
+    {% if redirectionio_agent_project_keys | length > 0 %}
+    project_keys:
+        {{ redirectionio_agent_project_keys | to_nice_yaml | indent(4) }}
+    {% endif %}
+
+
+api:
+    # Timeout for the agent to wait for a response from redirection.io manager when updating rules or sending logs
+    # Default value: 120
+    timeout: {{ redirectionio_agent_timeout }}
+    # redirection.io API endpoint
+    host: {{ redirectionio_agent_host }}
+
+# Run the agent as a reverse proxy
+# If this configuration node is not present no reverse proxy will be started
+# See the full configuration at https://redirection.io/documentation/agent-documentation/the-agent-as-a-reverse-proxy
+{% if redirectionio_agent_proxies | length > 0 %}
+reverse_proxy:
+    {{ redirectionio_agent_proxies | to_nice_yaml | indent(4) }}
+{% endif %}
+
+# Define the metrics monitoring endpoint configuration. This enables a http endpoint which serves some metrics about the agent
+#metrics:
+#    # Where the metrics server should listen, example values: 127.0.0.1:8080, 0.0.0.0:8080, /run/redirectionio-metrics.sock
+#    listen: 127.0.0.1:8080
+#    # Metrics format, can either be "json" or "prometheus", defaults to "json"
+#    format: "prometheus"
+{% if redirectionio_agent_metrics %}
+metrics:
+    {{ redirectionio_agent_metrics | to_nice_yaml | indent(4) }}
+{% endif %}
+
+# Sets log configuration. Each section is optional and independent of one another.
+#log:
+#    stderr:
+#        level: info
+#    file:
+#        level: info
+#        path: /var/log/redirectionio/agent.log
+#
+#    syslog:
+#        # To push to the local syslog:
+#        #
+#        # network: "" # empty string
+#        # address: "" # empty string
+#        #
+#        # or, to remote server:
+#        #
+#        # network: "udp"
+#        # address: "localhost:514"
+#        #
+#        level: info
+#        tag: redirectionio-agent # optional
+{% if redirectionio_agent_log %}
+log:
+    {{ redirectionio_agent_log | to_nice_yaml | indent(4) }}
+{% endif %}

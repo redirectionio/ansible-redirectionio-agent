@@ -8,6 +8,17 @@
     group: '{{ redirectionio_group }}'
     mode: "0644"
   notify: Restart redirectionio-agent
+  when: redirectionio_agent_main_version is defined and redirectionio_agent_main_version is version('3', '<')
+
+- name: Create redirectionio-agent v3 configuration file
+  ansible.builtin.template:
+    src: agent.yml.v3.j2
+    dest: /etc/redirectionio/agent.yml
+    owner: '{{ redirectionio_user }}'
+    group: '{{ redirectionio_group }}'
+    mode: "0644"
+  notify: Restart redirectionio-agent
+  when: redirectionio_agent_main_version is defined and redirectionio_agent_main_version is version('3', '>=')
 
 - name: "Create directory {{ redirectionio_agent_datadir }}"
   ansible.builtin.file:
